@@ -12,7 +12,7 @@
  * GitHub Plugin URI: jahur/wpabl_import
  */
 
-// If this file is called directly, abort.
+// If this file is called directly, abort. test this
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
