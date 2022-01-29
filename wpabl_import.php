@@ -3,7 +3,7 @@
  * Plugin Name:       WPABL Import
  * Plugin URI:        https://timmermarketing.com
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Version:           1.0.2
  * Author:            Jahur Ahmed
  * Author URI:        https://timmermarketing.com
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
