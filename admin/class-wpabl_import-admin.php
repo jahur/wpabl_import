@@ -54,6 +54,11 @@ class Wpabl_import_Admin {
 
 	}
 
+	// public function load_all_other_admin_files(){
+	// 	// Load all other files related to admin
+	// 	require_once plugin_dir_path( __FILE__ ) . 'lib/class-wpabl_import-post-type.php';
+	// }
+
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
@@ -99,5 +104,6 @@ class Wpabl_import_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wpabl_import-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+	
 
 }
