@@ -130,6 +130,8 @@ class Wpabl_import {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/lib/class-wpabl_import-post-type.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/lib/class-wpabl_import-xml-process.php';
+
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
@@ -171,11 +173,12 @@ class Wpabl_import {
 
 		$plugin_admin = new Wpabl_import_Admin( $this->get_plugin_name(), $this->get_version() );
 		$plugin_post_type = new Wpabl_import_Post_Type( $this->get_plugin_name(), $this->get_version() );
+		//
 		//$plugin_admin1 = new Wpabl_import_Post_Type( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		//$this->loader->add_action( 'init', $plugin_admin, 'load_all_other_admin_files' );
-		$this->loader->add_action( 'init', $plugin_post_type, 'register_property_post_type' );//
+		$this->loader->add_action( 'init', $plugin_post_type, 'register_property_post_type' );
 		//add_action('init', '');
 
 	}

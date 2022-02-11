@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE propertyList SYSTEM "http://reaxml.realestate.com.au/propertyList.dtd">
+<propertyList date="2021-08-16-11:19:45" username="feeddata@kanproperty.com.au" password="A{GZNQ,_1XJ.">
+  <residential modTime="2021-08-13-15:38:15" status="sold">
+    <agentID>KAPN4136</agentID>
+    <uniqueID>1P0109</uniqueID>
+    <isMultiple/>
+    <soldDetails>
+      <soldPrice display="yes">4601000</soldPrice>
+      <soldDate>2021-08-06</soldDate>
+    </soldDetails>
+    <newConstruction>0</newConstruction>
+    <tenancy>vacant</tenancy>
+    <authority value="exclusive"/>
+    <price display="yes">4000000</price>
+    <priceView>Sold Prior to Auction</priceView>
+    <underOffer value="no"/>
+    <exclusivity value="exclusive"/>
+    <councilRates>$545.00 Quarterly</councilRates>
+    <outgoings>2783.96</outgoings>
+    <landDetails>
+      <area unit="squareMeter">386</area>
+      <frontage unit="meter">0</frontage>
+    </landDetails>
+    <buildingDetails>
+      <energyRating></energyRating>
+    </buildingDetails>
+    <listingAgent id="1">
+      <name>Kerry-Anne Nielsen</name>
+      <telephone type="mobile">0418969161</telephone>
+      <telephone type="BH">0418969161</telephone>
+      <email>kerry-anne@kanproperty.com.au</email>
+    </listingAgent>
+    <listingAgent id="2">
+      <name>Ashleigh Portelli</name>
+      <telephone type="mobile">0420752563</telephone>
+      <telephone type="BH">0418969161</telephone>
+      <email>ashleigh@kanproperty.com.au</email>
+    </listingAgent>
+    <listingAgent id="3"/>
+    <listingAgent id="4"/>
+    <address display="yes" streetview="yes">
+      <subNumber></subNumber>
+      <lotNumber></lotNumber>
+      <streetNumber>3</streetNumber>
+      <street>Edwin Street</street>
+      <suburb display="yes">Fairlight</suburb>
+      <state>NSW</state>
+      <postcode>2094</postcode>
+      <country>AUS</country>
+    </address>
+    <category name="House"/>
+    <features>
+      <openSpaces>1</openSpaces>
+      <bedrooms>3</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>1</garages>
+      <carports>0</carports>
+      <toilets>0</toilets>
+      <livingAreas>0</livingAreas>
+      <airConditioning>0</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <builtInRobes>1</builtInRobes>
+      <ensuite>0</ensuite>
+      <furnished>0</furnished>
+      <intercom>0</intercom>
+      <openFirePlace>0</openFirePlace>
+      <petFriendly>0</petFriendly>
+      <smokers>0</smokers>
+      <tennisCourt>0</tennisCourt>
+      <vacuumSystem>0</vacuumSystem>
+      <otherFeatures>Area Views, Close to Schools, Close to Shops, Close to Transport</otherFeatures>
+    </features>
+    <headline>Classic Charm Embraces Timeless Style </headline>
+    <description>Drawing inspiration from its classic period features, this superb dual level residence has been meticulously crafted and finished to create a bespoke sanctuary of space, timeless style and premium quality. Striking the perfect balance between luxurious liveability and relaxed coastal style, it offers an expansive floorplan with plenty of space and flexibility for entertaining and relaxing.
+
+At the heart of the home is a stunning formal living area awash with direct northerly light and featuring classic window seats and custom built-in shelving. A true entertainers' delight, catering for gatherings of all sizes will be effortless in the spacious, well-appointed gas kitchen with walk-in pantry and large stone breakfast bar.
+
+- Statement entry veranda &amp; foyer area with travertine paving blending into   whitewashed timber flooring 
+- High ceilings, decorative cornices, and superb leadlight window detailing
+- Indoor dining gives way to architecturally landscaped gardens
+- Dedicated outdoor zones for alfresco dining and relaxing around the fire-pit plus level grassed yard framed with in-built fishpond and water feature
+- Sumptuous entire floor master suite opening to private northerly terrace and coastal breezes, large ensuite and walk-in robe
+- Spacious bedroom retreats with vast built-in robes
+- Stunning main bathroom featuring travertine flooring, frameless screens, and separate bath and WC
+- Ducted reverse cycle air-conditioning, skylights, and plantation shutters throughout
+- Lock-up garage and car space
+
+Occupying a blue-ribbon position on a premier street, and conveniently placed for Manly and city accessibility, this outstanding home offers a luxurious living experience. With wonderful lifestyle appeal, just a stroll to transport, Harris Farm shopping, Fairlight cafes, schools and the beach.  This Beautiful Home  awaits your personal inspection.
+
+Total Outgoings: 
+Water Levies:          Approx. $150.99 p.q.
+Council Rates:        Approx. $545.00 p.q
+
+Land Size:                Approx. 368m2 
+
+Estimated Rental:   Approx. $1,800 - $2,000 per week
+
+
+To book a private showing please contact Kerry-Anne Nielsen 0418 969 161 or Ashleigh Portelli 0420 752 563. 
+</description>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href="https://www.youtube.com/embed/3A1npR8wCuM"/>
+    <objects>
+      <img modTime="2021-07-23-16:26:38" id="m" recordId="278" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702159852159121-rsd.jpg" format="jpg"></img>
+      <img modTime="2021-07-23-16:26:37" id="a" recordId="276" title="youtu.be/3A1npR8wCuM" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702159755359138-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:37" id="b" recordId="275" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702159790165637-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:38" id="c" recordId="279" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702159955541850-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-24-13:25:04" id="d" recordId="287" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162709710510595757-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:35" id="e" recordId="273" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702159513866725-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:49" id="f" recordId="282" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702160985139004-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:53" id="g" recordId="283" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702161325150368-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:34" id="h" recordId="272" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702159480461449-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:35" id="i" recordId="274" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702159592474589-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:40" id="j" recordId="280" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702160098782510-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:19" id="k" recordId="270" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702157911934624-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:45" id="l" recordId="281" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702160531435346-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:20" id="n" recordId="271" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702158018684472-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-23-16:26:37" id="o" recordId="277" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162702159744658701-rsd.jpg" format="jpg"/>
+      <img modTime="2021-07-26-10:37:00" id="p" recordId="288" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/162725982081914078-rsd.jpg" format="jpg"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+      <img id="aa"/>
+      <img id="ab"/>
+      <img id="ac"/>
+      <img id="ad"/>
+      <img id="ae"/>
+      <img id="af"/>
+      <img id="ag"/>
+      <img id="ah"/>
+      <img id="ai"/>
+      <floorplan modTime="2021-07-24-13:22:52" id="1" recordId="21" title="" url="https://agentboxcdn.com.au/clients-data/4136/public_html/media/lt/1/1P0109/fp/162709686699084139-rsz.jpg" format="jpg"></floorplan>
+      <floorplan id="2"/>
+    </objects>
+    <media/>
+    <extraFields name="waterRates" period="quarter" value="150.99"/>
+    <extraFields name="councilRates" period="quarter" value="545.00"/>
+    <extraFields name="strataAdmin"/>
+    <extraFields name="strataSinking"/>
+    <extraFields name="otherOutgoings"/>
+    <extraFields name="propertyName"/>
+    <extraFields name="inspectionOpenType" value="Open by Appointment"/>
+    <extraFields name="geoLat" value="-33.79348373"/>
+    <extraFields name="geoLong" value="151.27702332"/>
+    <extraFields name="levelNumber"/>
+    <extraFields name="externalArea"/>
+    <extraFields name="landTax"/>
+    <extraFields name="holidayGuests"/>
+    <extraFields name="leaseDetails"/>
+    <extraFields name="streetAddress" value="3 Edwin Street"/>
+    <extraFields name="hiddenListing" value="0"/>
+    <extraFields name="regionName" value="Northern Beaches"/>
+    <extraFields name="investmentPotential" value="0"/>
+  </residential>
+</propertyList>
