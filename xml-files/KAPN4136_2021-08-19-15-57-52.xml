@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE propertyList SYSTEM "http://reaxml.realestate.com.au/propertyList.dtd">
 <propertyList date="2021-08-16-11:19:45" username="feeddata@kanproperty.com.au" password="A{GZNQ,_1XJ.">
-  <residential modTime="2021-08-13-15:38:15" status="sold">
+  <residential>
     <agentID>KAPN4136</agentID>
-    <uniqueID>1P0109</uniqueID>
+    <uniqueID>1P0702</uniqueID>
     <isMultiple/>
     <soldDetails>
       <soldPrice display="yes">4601000</soldPrice>

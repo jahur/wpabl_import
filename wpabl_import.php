@@ -699,129 +699,201 @@ function process_single_property_xml_data($arr){
 
 	if(is_array($arr)){
 		
-		echo '<pre>';
-		$modTime = $arr['@attributes']['modTime'];
-		$status = $arr['@attributes']['status'];
+		//echo '<pre>';
+		if(array_key_exists('@attributes', $arr) && array_key_exists('modTime', $arr['@attributes']) ){
+			$modTime = sanitize_text_field($arr['@attributes']['modTime']);	
+		}
 
-		$agentID = sanitize_text_field($arr['agentID']);
-		$uniqueID = sanitize_text_field($arr['uniqueID']);
+		if(array_key_exists('@attributes', $arr) && array_key_exists('status', $arr['@attributes']) ){
+			$status = sanitize_text_field($arr['@attributes']['status']);
+		}
+	
+		if(array_key_exists('agentID', $arr)){
+			$agentID = sanitize_text_field($arr['agentID']);
+		}
+
+		if(array_key_exists('uniqueID', $arr)){
+			$uniqueID = sanitize_text_field($arr['uniqueID']);
+		}
 
 		//var_dump($arr['isMultiple']); // need to know the array elements
+		if(array_key_exists('soldDetails', $arr) && array_key_exists('soldPrice', $arr['soldDetails']) ){
+			$soldPrice = sanitize_text_field($arr['soldDetails']['soldPrice']);
+		}
+
+		if(array_key_exists('soldDetails', $arr) && array_key_exists('soldDate', $arr['soldDetails']) ){
+			$soldDate = sanitize_text_field($arr['soldDetails']['soldDate']);
+		}
+
+		if(array_key_exists('newConstruction', $arr)){
+			$newConstruction = sanitize_text_field($arr['newConstruction']);
+		}
+
+		if(array_key_exists('tenancy', $arr)){
+			$tenancy = sanitize_text_field($arr['tenancy']);
+		}
 		
-		$soldPrice = $arr['soldDetails']['soldPrice'];
-		$soldDate = $arr['soldDetails']['soldDate'];
+		if(array_key_exists('authority', $arr) && array_key_exists('@attributes', $arr['authority']) && array_key_exists('value', $arr['authority']['@attributes']) ){
+			$authority = sanitize_text_field($arr['authority']['@attributes']['value']);
+		}
 
-		$newConstruction = sanitize_text_field($arr['newConstruction']);
-		$tenancy = sanitize_text_field($arr['tenancy']);
-		$authority = sanitize_text_field($arr['authority']['@attributes']['value']);
-		$price = sanitize_text_field($arr['price']);
-		$priceView = sanitize_text_field($arr['priceView']);
-		$underOffer = sanitize_text_field($arr['underOffer']['@attributes']['value']);
-		$exclusivity = sanitize_text_field($arr['exclusivity']['@attributes']['value']);
+		if(array_key_exists('price', $arr)){
+			$price = sanitize_text_field($arr['price']);
+		}
+
+		if(array_key_exists('priceView', $arr)){
+			$priceView = sanitize_text_field($arr['priceView']);
+		}
+		
+		if(array_key_exists('underOffer', $arr) && array_key_exists('@attributes', $arr['underOffer']) && array_key_exists('value', $arr['underOffer']['@attributes']) ){
+			$underOffer = sanitize_text_field($arr['underOffer']['@attributes']['value']);
+		}
+		
+		if(array_key_exists('exclusivity', $arr) && array_key_exists('@attributes', $arr['exclusivity']) && array_key_exists('value', $arr['exclusivity']['@attributes']) ){
+			$exclusivity = sanitize_text_field($arr['exclusivity']['@attributes']['value']);
+		}
 	
-		$councilRates = sanitize_text_field($arr['councilRates']);
-		$outgoings = sanitize_text_field($arr['outgoings']);
+		if(array_key_exists('councilRates', $arr)){
+			$councilRates = sanitize_text_field($arr['councilRates']);
+		}
+		
+		if(array_key_exists('outgoings', $arr)){
+			$outgoings = sanitize_text_field($arr['outgoings']);
+		}
 
-		$landDetailsArea = sanitize_text_field($arr['landDetails']['area']);
-		$landDetailsArea = sanitize_text_field($arr['landDetails']['frontage']);
+		if(array_key_exists('landDetails', $arr) && array_key_exists('area', $arr['landDetails'])){
+			$landDetailsArea = sanitize_text_field($arr['landDetails']['area']);
+		}
+
+		if(array_key_exists('landDetails', $arr) && array_key_exists('frontage', $arr['landDetails'])){
+			$landDetailsFrontage = sanitize_text_field($arr['landDetails']['frontage']);
+		}
 		
 		//var_dump($arr['buildingDetails']); // need to know the array elements
 		
-		$listingAgents= structure_raw_listing_agents($arr['listingAgent']);
-
-		$address = $arr['address'];
-
-		$categoryName = sanitize_text_field($arr['category']['@attributes']['name']);
-		$features = $arr['features'];
-
-		foreach($features as $feature_key => $feature_value){
-			if($feature_key != 'otherFeatures'){
-				//all features except otherFeatures
-				//echo (int)$feature_value;
-			}
+		if(array_key_exists('listingAgent', $arr)){
+			$listingAgents= structure_raw_listing_agents($arr['listingAgent']);
+		}
+		
+		if(array_key_exists('address', $arr)){
+			$address = $arr['address'];
 		}
 
-		$featuresOtherFeatures = $features['otherFeatures'];
+		if(array_key_exists('category', $arr) && array_key_exists('@attributes', $arr['category']) && array_key_exists('name', $arr['category']['@attributes']) ){
+			$categoryName = sanitize_text_field($arr['category']['@attributes']['name']);
+		}
+
+		if(array_key_exists('features', $arr)){
+			$features = $arr['features'];
+
+			foreach($features as $feature_key => $feature_value){
+				if($feature_key != 'otherFeatures'){
+					//all features except otherFeatures
+					//echo (int)$feature_value;
+				}
+			}
+		}
 		
-		$headline = sanitize_text_field($arr['headline']);
-		$description = sanitize_text_field($arr['description']);
+		if(array_key_exists('features', $arr) && array_key_exists('otherFeatures', $arr['features']) ){
+			$featuresOtherFeatures = $arr['features']['otherFeatures'];
+		}
+		
+		if(array_key_exists('headline', $arr)){
+			$headline = sanitize_text_field($arr['headline']);
+		}
+
+		if(array_key_exists('description', $arr)){
+			$description = sanitize_text_field($arr['description']);
+		}
 
 		//var_dump($arr['inspectionTimes']); // need to know the array elements
 		
-		$externalLinkHref = sanitize_text_field($arr['externalLink']['@attributes']['href']);
-		$videoLinkHref = sanitize_text_field($arr['videoLink']['@attributes']['href']);
+		if(array_key_exists('externalLink', $arr) && array_key_exists('@attributes', $arr['externalLink']) && array_key_exists('href', $arr['externalLink']['@attributes']) ){
+			$externalLinkHref = sanitize_text_field($arr['externalLink']['@attributes']['href']);
+		}
 
-		$objectsImg = $arr['objects']['img'];
-		$objectsFloorplan = $arr['objects']['floorplan'];
+		if(array_key_exists('videoLink', $arr) && array_key_exists('@attributes', $arr['videoLink']) && array_key_exists('href', $arr['videoLink']['@attributes']) ){
+			$videoLinkHref = sanitize_text_field($arr['videoLink']['@attributes']['href']);
+		}
 
-		$objectsImgNew = get_url_from_raw_array($objectsImg);
-		$objectsFloorplanNew = get_url_from_raw_array($objectsFloorplan);
-		
-		//var_dump($arr['media']); // need to know the array elements
-	
-		$extraFields = $arr['extraFields'];
-
-		foreach($extraFields as $extraField){
-
-			foreach($extraField['@attributes'] as $attribute_key => $attribute_value){
-				//echo $attribute_key . ': ' . $attribute_value; 
-				//echo '<br>'; 
+		if(array_key_exists('objects', $arr)){
+			if(array_key_exists('objects', $arr) && array_key_exists('img', $arr['objects']) ){
+				$objectsImg = $arr['objects']['img'];
+				$objectsImgNew = get_url_from_raw_array($objectsImg);
+			}
+			if(array_key_exists('objects', $arr) && array_key_exists('floorplan', $arr['objects']) ){
+				$objectsFloorplan = $arr['objects']['floorplan'];
+				$objectsFloorplanNew = get_url_from_raw_array($objectsFloorplan);
 			}
 		}
-		echo '</pre>';
+
+		//var_dump($arr['media']); // need to know the array elements
+		
+		if(array_key_exists('extraFields', $arr)){
+			$extraFields = $arr['extraFields'];
+		
+				foreach($extraFields as $extraField){
+					
+					if(array_key_exists('@attributes', $extraField)){
+						foreach($extraField['@attributes'] as $attribute_key => $attribute_value){
+							//echo $attribute_key . ': ' . $attribute_value; 
+							//echo '<br>'; 
+						}
+					
+					}
+		
+				}
+			
+		}
+
+		//echo '</pre>';
 	}
 }
 
+function is_ab_property($arr){
+	$property_criteria = array('uniqueID');
+	if(array_key_exists($property_criteria[0], $arr)){
+		return true;
+	}else{
+		return false;
+	}
+}
 function xmltestfn(){
-
-	$property_criteria = array('agentID', 'uniqueID');
 
 	$all_files = glob(plugin_dir_path(__FILE__)."xml-files/*.xml");
     
         foreach($all_files as $file) {
-			
+			//echo '<pre>';
+			//var_dump($file);
             $xml = simplexml_load_file($file);
 			$json = json_encode($xml);
         	$data_array = json_decode($json,TRUE);
 			unset($data_array['@attributes']);
 			//var_dump($data_array);
-			foreach($data_array as $property_array){
-				//echo '<pre>';
-				//var_dump(is_assoc($property_array));
-				//echo '</pre>';
-				if(is_assoc($property_array)){
-					//echo 'single property';
-					//echo '<pre>';
-					//var_dump(array_keys($property_array));
-					//echo '</pre>';
-					//array_keys($property_array);
-					process_single_property_xml_data($property_array);
-				}elseif (!is_assoc($property_array)) {
-					//echo 'Multiple property';
+			foreach($data_array as $properties_array){
+				
+				if(is_assoc($properties_array)){
+					//var_dump(is_ab_property($properties_array));
+					$property_array = $properties_array;
+					if(is_ab_property($property_array)){
+						process_single_property_xml_data($property_array);
+						
+					}
+					
+					//var_dump($properties_array);
+					//echo '<br><br><br>';
+				}elseif(!is_assoc($properties_array)){
+					foreach($properties_array as $property_array){
+						//var_dump(is_ab_property($property_array));
+						//var_dump($property_array);
+						//echo '<br><br><br>';
+						process_single_property_xml_data($property_array);
+						
+					}
 				}
 			}
-			// foreach(array_keys($data_array) as $property_type){
-			// 	//$property_type = 'check';
-			// 	var_dump($property_type); 
-			// 	//$check = in_array($property_type, $allowed_property_types);
-			// 	if($check){
-			// 		echo 'I am in';
-			// 	}
-
-			// 	echo '<br>';
-				
-			// }
-
-
-
+			//echo '</pre>';
         }
-
-	//echo '<pre>';
-	//print_r(array_keys($data_array['residential']));
-	//print_r(is_assoc($array[0]['rental']));
-	//var_dump(is_assoc($array[0]['rental']));
-	//print_r($data_array);
-	//echo '</pre>';
 
 }
 
