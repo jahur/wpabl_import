@@ -33,8 +33,7 @@ class Wpabl_import_Functions{
 
 	}
 
-    public function admin_menu(){
-    
-    }
+
+
 
 }

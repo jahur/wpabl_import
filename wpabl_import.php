@@ -67,319 +67,10 @@ function run_wpabl_import() {
 }
 run_wpabl_import();
 
-require_once plugin_dir_path( __FILE__ ) . 'hd-wp-metabox-api/class-hd-wp-metabox-api.php';
 
-$wpabl_options = array(
-	'metabox_id'    => 'wpabl_metabox',
-	'metabox_title' => 'WPABL Info',
-	'metabox_classes' => '',
-	'post_type'     => array( 'abproperty' ),
-	'context'       => 'normal',
-	'priority'      => 'high',
-);
+// Options page settings
 
-$wpabl_fields = array(
-	'wpabl_agent_id' => array(
-		'title'   => 'Agent ID',
-		'type'    => 'text',
-		'desc'    => '',
-		'sanit'   => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_unique_id' => array(
-		'title'   => 'Unique ID',
-		'type'    => 'text',
-		'desc'    => '',
-		'sanit'   => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_is_multiple' => array(
-		'title' => 'Is Multiple',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_sold_details_section_title' => array(
-		'title' => 'Sold Details',
-		'type' => 'section',
-		'sanit'   => 'nohtml',
-	),
-	'wpabl_sold_price' => array(
-		'title' => 'Sold Price',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_sold_date' => array(
-		'title' => 'Sold Date',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_new_construction' => array(
-		'title'   => 'New construction?',
-		'type'    => 'checkbox',
-		'desc'    => '',
-		'sanit'   => 'nohtml',
-		'classes' => 'wpabl-col-1-1-lg float-left',
-	),
-	'wpabl_tenancy' => array(
-		'title' => 'Tenancy',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_authority' => array(
-		'title' => 'Authority',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_price' => array(
-		'title' => 'Price',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_price_view' => array(
-		'title' => 'Price view',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_under_offer' => array(
-		'title' => 'Under offer',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_exclusivity' => array(
-		'title' => 'Exclusivity',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_council_rates' => array(
-		'title' => 'Council rates',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_outgoings' => array(
-		'title' => 'Outgoings',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_land_details_title' => array(
-		'title' => 'Land details',
-		'type' => 'section',
-		'sanit'   => 'nohtml'
-	),
-	'wpabl_area' => array(
-		'title' => 'Area',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_frontage' => array(
-		'title' => 'Frontage',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_building_details_title' => array(
-		'title' => 'Building details',
-		'type' => 'section',
-		'sanit'   => 'nohtml'
-	),
-	'wpabl_energy_rating' => array(
-		'title' => 'Energy rating',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_address_title' => array(
-		'title' => 'Address',
-		'type' => 'section',
-		'sanit'   => 'nohtml'
-	),
-	'wpabl_sub_number' => array(
-		'title' => 'Sub number',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-3-lg float-left',
-	),
-	'wpabl_lot_number' => array(
-		'title' => 'Lot number',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-3-lg float-left',
-	),
-	'wpabl_street_number' => array(
-		'title' => 'Street number',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-3-lg float-left',
-	),
-	'wpabl_street' => array(
-		'title' => 'Street',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-3-lg float-left',
-	),
-	'wpabl_suburb' => array(
-		'title' => 'Suburb',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-3-lg float-left',
-	),
-	'wpabl_state' => array(
-		'title' => 'State',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-3-lg float-left',
-	),
-	'wpabl_country' => array(
-		'title' => 'Country',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-3-lg float-left',
-	),
-	'wpabl_post_code' => array(
-		'title' => 'Post code',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-3-lg float-left',
-	),
-	'wpabl_features_title' => array(
-		'title' => 'Features',
-		'type' => 'section',
-		'sanit'   => 'nohtml',
-	),
-	'wpabl_open_spaces' => array(
-		'title' => 'Open spaces',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_other_features' => array(
-		'title' => 'Other features',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_headline' => array(
-		'title' => 'Headline',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_inspection_times' => array(
-		'title' => 'Inspection times',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	'wpabl_external_link' => array(
-		'title' => 'External link',
-		'type' => 'text',
-		'desc' => '',
-		'saint' => 'nohtml',
-		'classes' => 'wpabl-col-1-2-lg float-left',
-	),
-	// 'hd_radio_meta' => array(
-	// 	'title'   => 'Radio Input',
-	// 	'type'    => 'radio',
-	// 	'choices' => array(
-	// 		'one'   => 'Option 1',
-	// 		'two'   => 'Option 2',
-	// 		'three' => 'Option 3'
-	// 	),
-	// 	'desc'    => 'Example Radio Input',
-	// 	'sanit'   => 'nohtml',
-	// ),
-	// 'hd_select_meta' => array(
-	// 	'title'   => 'Select Input',
-	// 	'type'    => 'select',
-	// 	'choices' => array(
-	// 		'one'   => 'Option 1',
-	// 		'two'   => 'Option 2',
-	// 		'three' => 'Option 3'
-	// 	),
-	// 	'desc'    => 'Example Select Input',
-	// 	'sanit'   => 'nohtml',
-	// ),
-	// 'hd_multiselect_meta' => array(
-	// 	'title'   => 'Multi Select Input',
-	// 	'type'    => 'select',
-	// 	'choices' => array(
-	// 		'one'   => 'Option 1',
-	// 		'two'   => 'Option 2',
-	// 		'three' => 'Option 3'
-	// 	),
-	// 	'multiple' => true,
-	// 	'desc'     => 'Example Multi Select Input',
-	// 	'sanit'    => 'nohtml',
-	// ),
-	// 'hd_multicheck_meta' => array(
-	// 	'title'   => 'Multi Checkbox Input',
-	// 	'type'    => 'multicheck',
-	// 	'choices' => array(
-	// 		'one'   => 'Option 1',
-	// 		'two'   => 'Option 2',
-	// 		'three' => 'Option 3'
-	// 	),
-	// 	'desc'    => 'Example Multi Checkbox Input',
-	// 	'sanit'   => 'nohtml',
-	// ),
-	// 'hd_upload_meta' => array(
-	// 	'title'   => 'Upload Input',
-	// 	'type'    => 'upload',
-	// 	'desc'    => 'Example Upload Input',
-	// 	'sanit'   => 'url',
-	// ),
-	// 'hd_color_meta' => array(
-	// 	'title'   => 'Color Input',
-	// 	'type'    => 'color',
-	// 	'desc'    => 'Example Color Input',
-	// 	'sanit'   => 'color',
-	// ),
-	// 'hd_editor_meta' => array(
-	// 	'title'   => 'Editor Input',
-	// 	'type'    => 'editor',
-	// 	'desc'    => 'Example Editor Input',
-	// 	'sanit'   => 'nohtml',
-	// ),
-);
-
-$wpabl_metabox = new HD_WP_Metabox_API( $wpabl_options, $wpabl_fields );
+// Options settings ends
 
 // Add Meta Box to post
 add_action( 'add_meta_boxes', 'multi_media_uploader_meta_box' );
@@ -503,7 +194,7 @@ function wc_meta_box_save( $post_id ) {
 		return;	
 	}
 
-	if( !current_user_can( 'edit_post' ) ){
+	if( !current_user_can( 'administrator' ) ){
 		return;	
 	}
 	
@@ -512,149 +203,11 @@ function wc_meta_box_save( $post_id ) {
 	}
 }
 
-function wporg_settings_init() {
-    // Register a new setting for "wporg" page.
-    register_setting( 'wporg', 'wporg_options' );
- 
-    // Register a new section in the "wporg" page.
-    add_settings_section(
-        'wporg_section_developers',
-        __( 'The Matrix has you.', 'wporg' ), 'wporg_section_developers_callback',
-        'wporg'
-    );
- 
-    // Register a new field in the "wporg_section_developers" section, inside the "wporg" page.
-    add_settings_field(
-        'wporg_field_pill', // As of WP 4.6 this value is used only internally.
-                                // Use $args' label_for to populate the id inside the callback.
-            __( 'Pill', 'wporg' ),
-        'wporg_field_pill_cb',
-        'wporg',
-        'wporg_section_developers',
-        array(
-            'label_for'         => 'wporg_field_pill',
-            'class'             => 'wporg_row',
-            'wporg_custom_data' => 'custom',
-        )
-    );
-}
  
 /**
  * Register our wporg_settings_init to the admin_init action hook.
  */
-add_action( 'admin_init', 'wporg_settings_init' );
- 
- 
-/**
- * Custom option and settings:
- *  - callback functions
- */
- 
- 
-/**
- * Developers section callback function.
- *
- * @param array $args  The settings array, defining title, id, callback.
- */
-function wporg_section_developers_callback( $args ) {
-    ?>
-    <p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Follow the white rabbit.', 'wporg' ); ?></p>
-    <?php
-}
- 
-/**
- * Pill field callbakc function.
- *
- * WordPress has magic interaction with the following keys: label_for, class.
- * - the "label_for" key value is used for the "for" attribute of the <label>.
- * - the "class" key value is used for the "class" attribute of the <tr> containing the field.
- * Note: you can add custom key value pairs to be used inside your callbacks.
- *
- * @param array $args
- */
-function wporg_field_pill_cb( $args ) {
-    // Get the value of the setting we've registered with register_setting()
-    $options = get_option( 'wporg_options' );
-    ?>
-    <select
-            id="<?php echo esc_attr( $args['label_for'] ); ?>"
-            data-custom="<?php echo esc_attr( $args['wporg_custom_data'] ); ?>"
-            name="wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>]">
-        <option value="red" <?php echo isset( $options[ $args['label_for'] ] ) ? ( selected( $options[ $args['label_for'] ], 'red', false ) ) : ( '' ); ?>>
-            <?php esc_html_e( 'red pill', 'wporg' ); ?>
-        </option>
-        <option value="blue" <?php echo isset( $options[ $args['label_for'] ] ) ? ( selected( $options[ $args['label_for'] ], 'blue', false ) ) : ( '' ); ?>>
-            <?php esc_html_e( 'blue pill', 'wporg' ); ?>
-        </option>
-    </select>
-    <p class="description">
-        <?php esc_html_e( 'You take the blue pill and the story ends. You wake in your bed and you believe whatever you want to believe.', 'wporg' ); ?>
-    </p>
-    <p class="description">
-        <?php esc_html_e( 'You take the red pill and you stay in Wonderland and I show you how deep the rabbit-hole goes.', 'wporg' ); ?>
-    </p>
-    <?php
-}
- 
-/**
- * Add the top level menu page.
- */
-function wporg_options_page() {
-    add_menu_page(
-        'WPOrg',
-        'WPOrg Options',
-        'manage_options',
-        'wporg',
-        'wporg_options_page_html'
-    );
-}
- 
- 
-/**
- * Register our wporg_options_page to the admin_menu action hook.
- */
-add_action( 'admin_menu', 'wporg_options_page' );
- 
- 
-/**
- * Top level menu callback function
- */
-function wporg_options_page_html() {
-    // check user capabilities
-    if ( ! current_user_can( 'manage_options' ) ) {
-        return;
-    }
- 
-    // add error/update messages
- 
-    // check if the user have submitted the settings
-    // WordPress will add the "settings-updated" $_GET parameter to the url
-    if ( isset( $_GET['settings-updated'] ) ) {
-        // add settings saved message with the class of "updated"
-        add_settings_error( 'wporg_messages', 'wporg_message', __( 'Settings Saved', 'wporg' ), 'updated' );
-    }
- 
-    // show error/update messages
-    settings_errors( 'wporg_messages' );
-    ?>
-    <div class="wrap">
-        <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-        <form action="options.php" method="post">
-            <?php
-            // output security fields for the registered setting "wporg"
-            settings_fields( 'wporg' );
-            // output setting sections and their fields
-            // (sections are registered for "wporg", each field is registered to a specific section)
-            do_settings_sections( 'wporg' );
-            // output save settings button
-            submit_button( 'Save Settings' );
-            ?>
-        </form>
-    </div>
-    <?php
-}
-
-add_shortcode('xmltest', 'xmltestfn');
+//add_action( 'admin_init', 'wporg_settings_init' );
 
 
 function is_assoc(array $arr)
@@ -697,157 +250,419 @@ function get_url_from_raw_array($arr){
 
 function process_single_property_xml_data($arr){
 
+	$property_data = array();
 	if(is_array($arr)){
 		
 		//echo '<pre>';
 		if(array_key_exists('@attributes', $arr) && array_key_exists('modTime', $arr['@attributes']) ){
 			$modTime = sanitize_text_field($arr['@attributes']['modTime']);	
+			//var_dump($arr);
+			$property_data['@attributes']['modTime'] = $modTime;
+		}else{
+			$property_data['@attributes']['modTime'] = '';
 		}
 
 		if(array_key_exists('@attributes', $arr) && array_key_exists('status', $arr['@attributes']) ){
 			$status = sanitize_text_field($arr['@attributes']['status']);
+			$property_data['@attributes']['status'] = $status;
+		}else{
+			$property_data['@attributes']['status'] = '';
 		}
 	
 		if(array_key_exists('agentID', $arr)){
 			$agentID = sanitize_text_field($arr['agentID']);
+			$property_data['agentID'] = $agentID;
+		}else{
+			$property_data['agentID'] = '';
 		}
 
 		if(array_key_exists('uniqueID', $arr)){
 			$uniqueID = sanitize_text_field($arr['uniqueID']);
+			$property_data['uniqueID'] = $uniqueID;
+		}else{
+			$property_data['uniqueID'] = '';
 		}
 
-		//var_dump($arr['isMultiple']); // need to know the array elements
 		if(array_key_exists('soldDetails', $arr) && array_key_exists('soldPrice', $arr['soldDetails']) ){
 			$soldPrice = sanitize_text_field($arr['soldDetails']['soldPrice']);
+			$property_data['soldDetails']['soldPrice'] = $soldPrice;
+		}else{
+			$property_data['soldDetails']['soldPrice'] = '';
 		}
 
 		if(array_key_exists('soldDetails', $arr) && array_key_exists('soldDate', $arr['soldDetails']) ){
 			$soldDate = sanitize_text_field($arr['soldDetails']['soldDate']);
+			$property_data['soldDetails']['soldDate'] = $soldDate;
+		}else{
+			$property_data['soldDetails']['soldDate'] = '';
 		}
 
 		if(array_key_exists('newConstruction', $arr)){
 			$newConstruction = sanitize_text_field($arr['newConstruction']);
+			$property_data['newConstruction'] = $newConstruction;
+		}else{
+			$property_data['newConstruction'] = '';
 		}
 
 		if(array_key_exists('tenancy', $arr)){
 			$tenancy = sanitize_text_field($arr['tenancy']);
+			$property_data['tenancy'] = $tenancy;
+		}else{
+			$property_data['tenancy'] = '';
 		}
 		
 		if(array_key_exists('authority', $arr) && array_key_exists('@attributes', $arr['authority']) && array_key_exists('value', $arr['authority']['@attributes']) ){
 			$authority = sanitize_text_field($arr['authority']['@attributes']['value']);
+			$property_data['authority']['@attributes']['value'] = $authority;
+		}else{
+			$property_data['authority']['@attributes']['value'] = '';
 		}
 
 		if(array_key_exists('price', $arr)){
 			$price = sanitize_text_field($arr['price']);
+			$property_data['price'] = $price;
+		}else{
+			$property_data['price'] = '';
 		}
 
 		if(array_key_exists('priceView', $arr)){
 			$priceView = sanitize_text_field($arr['priceView']);
+			$property_data['priceView'] = $priceView;
+		}else{
+			$property_data['priceView'] = '';
 		}
 		
 		if(array_key_exists('underOffer', $arr) && array_key_exists('@attributes', $arr['underOffer']) && array_key_exists('value', $arr['underOffer']['@attributes']) ){
 			$underOffer = sanitize_text_field($arr['underOffer']['@attributes']['value']);
+			$property_data['underOffer']['@attributes']['value'] = $underOffer;
+		}else{
+			$property_data['underOffer']['@attributes']['value'] = '';
 		}
 		
 		if(array_key_exists('exclusivity', $arr) && array_key_exists('@attributes', $arr['exclusivity']) && array_key_exists('value', $arr['exclusivity']['@attributes']) ){
 			$exclusivity = sanitize_text_field($arr['exclusivity']['@attributes']['value']);
+			$property_data['exclusivity']['@attributes']['value'] = $exclusivity;
+		}else{
+			$property_data['exclusivity']['@attributes']['value'] = '';
 		}
 	
 		if(array_key_exists('councilRates', $arr)){
 			$councilRates = sanitize_text_field($arr['councilRates']);
+			$property_data['councilRates'] = $councilRates;
+		}else{
+			$property_data['councilRates'] = '';
 		}
 		
 		if(array_key_exists('outgoings', $arr)){
 			$outgoings = sanitize_text_field($arr['outgoings']);
+			$property_data['outgoings'] = $outgoings;
+		}else{
+			$property_data['outgoings'] = '';
 		}
 
 		if(array_key_exists('landDetails', $arr) && array_key_exists('area', $arr['landDetails'])){
 			$landDetailsArea = sanitize_text_field($arr['landDetails']['area']);
+			$property_data['landDetails']['area'] = $landDetailsArea;
+		}else{
+			$property_data['landDetails']['area'] = '';
 		}
 
 		if(array_key_exists('landDetails', $arr) && array_key_exists('frontage', $arr['landDetails'])){
 			$landDetailsFrontage = sanitize_text_field($arr['landDetails']['frontage']);
+			$property_data['landDetails']['frontage'] = $landDetailsFrontage;
+		}else{
+			$property_data['landDetails']['frontage'] = '';
 		}
-		
-		//var_dump($arr['buildingDetails']); // need to know the array elements
-		
+
 		if(array_key_exists('listingAgent', $arr)){
-			$listingAgents= structure_raw_listing_agents($arr['listingAgent']);
+			$listingAgents = structure_raw_listing_agents($arr['listingAgent']);
+			$property_data['listingAgent'] = $listingAgents;
+		}else{
+			$property_data['listingAgent'] = '';
 		}
 		
-		if(array_key_exists('address', $arr)){
-			$address = $arr['address'];
+		// if(array_key_exists('address', $arr)){
+		// 	$address = $arr['address'];
+		// 	$property_data['address'] = $address;
+		// }else{
+		// 	$property_data['address'] = '';
+		// }
+
+		if(array_key_exists('address', $arr) && array_key_exists('@attributes', $arr['address']) && array_key_exists('display', $arr['address']['@attributes']) ){
+			$addressDisplay = sanitize_text_field($arr['address']['@attributes']['display']);
+			$property_data['address']['@attributes']['display'] = $addressDisplay;
+		}else{
+			$property_data['address']['@attributes']['display'] = '';
 		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('@attributes', $arr['address']) && array_key_exists('streetview', $arr['address']['@attributes']) ){
+			$addressStreetview = sanitize_text_field($arr['address']['@attributes']['streetview']);
+			$property_data['address']['@attributes']['streetview'] = $addressStreetview;
+		}else{
+			$property_data['address']['@attributes']['streetview'] = '';
+		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('subNumber', $arr['address']) ){
+			$addressSubNumber = sanitize_text_field($arr['address']['subNumber']);
+			$property_data['address']['subNumber'] = convertArraytoString($addressSubNumber);
+		}else{
+			$property_data['address']['subNumber'] = '';
+		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('lotNumber', $arr['address']) ){
+			$addressLotNumber = sanitize_text_field($arr['address']['lotNumber']);
+			$property_data['address']['lotNumber'] = convertArraytoString($addressLotNumber);
+		}else{
+			$property_data['address']['lotNumber'] = '';
+		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('streetNumber', $arr['address']) ){
+			$addressStreetNumber = sanitize_text_field($arr['address']['streetNumber']);
+			$property_data['address']['streetNumber'] = $addressStreetNumber;
+		}else{
+			$property_data['address']['streetNumber'] = '';
+		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('street', $arr['address']) ){
+			$addressStreet = sanitize_text_field($arr['address']['street']);
+			$property_data['address']['street'] = $addressStreet;
+		}else{
+			$property_data['address']['street'] = '';
+		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('suburb', $arr['address']) ){
+			$addressSuburb = sanitize_text_field($arr['address']['suburb']);
+			$property_data['address']['suburb'] = $addressSuburb;
+		}else{
+			$property_data['address']['suburb'] = '';
+		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('state', $arr['address']) ){
+			$addressState = sanitize_text_field($arr['address']['state']);
+			$property_data['address']['state'] = $addressState;
+		}else{
+			$property_data['address']['state'] = '';
+		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('postcode', $arr['address']) ){
+			$addressPostcode = sanitize_text_field($arr['address']['postcode']);
+			$property_data['address']['postcode'] = $addressPostcode;
+		}else{
+			$property_data['address']['postcode'] = '';
+		}
+
+		if(array_key_exists('address', $arr) && array_key_exists('country', $arr['address']) ){
+			$addressCountry = sanitize_text_field($arr['address']['country']);
+			$property_data['address']['country'] = $addressCountry;
+		}else{
+			$property_data['address']['country'] = '';
+		}
+
 
 		if(array_key_exists('category', $arr) && array_key_exists('@attributes', $arr['category']) && array_key_exists('name', $arr['category']['@attributes']) ){
 			$categoryName = sanitize_text_field($arr['category']['@attributes']['name']);
+			$property_data['category']['@attributes']['name'] = $categoryName;
+		}else{
+			$property_data['category']['@attributes']['name'] = '';
 		}
 
-		if(array_key_exists('features', $arr)){
-			$features = $arr['features'];
 
-			foreach($features as $feature_key => $feature_value){
-				if($feature_key != 'otherFeatures'){
-					//all features except otherFeatures
-					//echo (int)$feature_value;
-				}
-			}
+		// Features start
+
+		if(array_key_exists('features', $arr) && array_key_exists('openSpaces', $arr['features']) ){
+			$featuresopenSpaces = sanitize_text_field($arr['features']['openSpaces']);
+			$property_data['features']['openSpaces'] = $featuresopenSpaces;
+		}else{
+			$property_data['features']['openSpaces'] = '';
+		}
+
+		if(array_key_exists('features', $arr) && array_key_exists('bedrooms', $arr['features']) ){
+			$featuresbedrooms = sanitize_text_field($arr['features']['bedrooms']);
+			$property_data['features']['bedrooms'] = $featuresbedrooms;
+		}else{
+			$property_data['features']['bedrooms'] = '';
+		}
+
+		if(array_key_exists('features', $arr) && array_key_exists('bathrooms', $arr['features']) ){
+			$featuresbathrooms = sanitize_text_field($arr['features']['bathrooms']);
+			$property_data['features']['bathrooms'] = $featuresbathrooms;
+		}else{
+			$property_data['features']['bathrooms'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('garages', $arr['features']) ){
+			$featuresgarages = sanitize_text_field($arr['features']['garages']);
+			$property_data['features']['garages'] = $featuresgarages;
+		}else{
+			$property_data['features']['garages'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('carports', $arr['features']) ){
+			$featurescarports = sanitize_text_field($arr['features']['carports']);
+			$property_data['features']['carports'] = $featurescarports;
+		}else{
+			$property_data['features']['carports'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('toilets', $arr['features']) ){
+			$featurestoilets = sanitize_text_field($arr['features']['toilets']);
+			$property_data['features']['toilets'] = $featurestoilets;
+		}else{
+			$property_data['features']['toilets'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('livingAreas', $arr['features']) ){
+			$featureslivingAreas = sanitize_text_field($arr['features']['livingAreas']);
+			$property_data['features']['livingAreas'] = $featureslivingAreas;
+		}else{
+			$property_data['features']['livingAreas'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('airConditioning', $arr['features']) ){
+			$featuresairConditioning = sanitize_text_field($arr['features']['airConditioning']);
+			$property_data['features']['airConditioning'] = $featuresairConditioning;
+		}else{
+			$property_data['features']['airConditioning'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('alarmSystem', $arr['features']) ){
+			$featuresalarmSystem = sanitize_text_field($arr['features']['alarmSystem']);
+			$property_data['features']['alarmSystem'] = $featuresalarmSystem;
+		}else{
+			$property_data['features']['alarmSystem'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('builtInRobes', $arr['features']) ){
+			$featuresbuiltInRobes = sanitize_text_field($arr['features']['builtInRobes']);
+			$property_data['features']['builtInRobes'] = $featuresbuiltInRobes;
+		}else{
+			$property_data['features']['builtInRobes'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('ensuite', $arr['features']) ){
+			$featuresensuite = sanitize_text_field($arr['features']['ensuite']);
+			$property_data['features']['ensuite'] = $featuresensuite;
+		}else{
+			$property_data['features']['ensuite'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('furnished', $arr['features']) ){
+			$featuresfurnished = sanitize_text_field($arr['features']['furnished']);
+			$property_data['features']['furnished'] = $featuresfurnished;
+		}else{
+			$property_data['features']['furnished'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('furnished', $arr['features']) ){
+			$featuresfurnished = sanitize_text_field($arr['features']['furnished']);
+			$property_data['features']['furnished'] = $featuresfurnished;
+		}else{
+			$property_data['features']['furnished'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('intercom', $arr['features']) ){
+			$featuresintercom = sanitize_text_field($arr['features']['intercom']);
+			$property_data['features']['intercom'] = $featuresintercom;
+		}else{
+			$property_data['features']['intercom'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('openFirePlace', $arr['features']) ){
+			$featuresopenFirePlace = sanitize_text_field($arr['features']['openFirePlace']);
+			$property_data['features']['openFirePlace'] = $featuresopenFirePlace;
+		}else{
+			$property_data['features']['openFirePlace'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('petFriendly', $arr['features']) ){
+			$featurespetFriendly = sanitize_text_field($arr['features']['petFriendly']);
+			$property_data['features']['petFriendly'] = $featurespetFriendly;
+		}else{
+			$property_data['features']['petFriendly'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('smokers', $arr['features']) ){
+			$featuressmokers = sanitize_text_field($arr['features']['smokers']);
+			$property_data['features']['smokers'] = $featuressmokers;
+		}else{
+			$property_data['features']['smokers'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('tennisCourt', $arr['features']) ){
+			$featurestennisCourt = sanitize_text_field($arr['features']['tennisCourt']);
+			$property_data['features']['tennisCourt'] = $featurestennisCourt;
+		}else{
+			$property_data['features']['tennisCourt'] = '';
+		}
+		if(array_key_exists('features', $arr) && array_key_exists('vacuumSystem', $arr['features']) ){
+			$featuresvacuumSystem = sanitize_text_field($arr['features']['vacuumSystem']);
+			$property_data['features']['vacuumSystem'] = $featuresvacuumSystem;
+		}else{
+			$property_data['features']['vacuumSystem'] = '';
 		}
 		
 		if(array_key_exists('features', $arr) && array_key_exists('otherFeatures', $arr['features']) ){
-			$featuresOtherFeatures = $arr['features']['otherFeatures'];
+			$featuresOtherFeatures = sanitize_text_field($arr['features']['otherFeatures']);
+			$property_data['features']['otherFeatures'] = $featuresOtherFeatures;
+		}else{
+			$property_data['features']['otherFeatures'] = '';
 		}
+
+		// Features end
 		
 		if(array_key_exists('headline', $arr)){
 			$headline = sanitize_text_field($arr['headline']);
+			$property_data['headline'] = $headline;
 		}
 
 		if(array_key_exists('description', $arr)){
 			$description = sanitize_text_field($arr['description']);
+			$property_data['description'] = $description;
 		}
 
-		//var_dump($arr['inspectionTimes']); // need to know the array elements
+		// if(array_key_exists('description', $arr)){
+		// 	$description = sanitize_text_field($arr['description']);
+		// 	$property_data['description'] = $description;
+		// }$property_array['inspectionTimes']['inspection']
+
+		if( array_key_exists('inspectionTimes', $arr) && array_key_exists('inspection', $arr['inspectionTimes']) ){
+			$inspectionTimes = $arr['inspectionTimes']['inspection'];
+			$property_data['inspectionTimes']['inspection'] = convertArraytoString($inspectionTimes);
+		}
 		
 		if(array_key_exists('externalLink', $arr) && array_key_exists('@attributes', $arr['externalLink']) && array_key_exists('href', $arr['externalLink']['@attributes']) ){
 			$externalLinkHref = sanitize_text_field($arr['externalLink']['@attributes']['href']);
+			$property_data['externalLink']['@attributes']['href'] = $externalLinkHref;
 		}
 
 		if(array_key_exists('videoLink', $arr) && array_key_exists('@attributes', $arr['videoLink']) && array_key_exists('href', $arr['videoLink']['@attributes']) ){
 			$videoLinkHref = sanitize_text_field($arr['videoLink']['@attributes']['href']);
+			$property_data['videoLink']['@attributes']['href'] = $videoLinkHref;
 		}
 
 		if(array_key_exists('objects', $arr)){
 			if(array_key_exists('objects', $arr) && array_key_exists('img', $arr['objects']) ){
 				$objectsImg = $arr['objects']['img'];
 				$objectsImgNew = get_url_from_raw_array($objectsImg);
+				$property_data['objects']['img'] = $objectsImgNew;
 			}
 			if(array_key_exists('objects', $arr) && array_key_exists('floorplan', $arr['objects']) ){
 				$objectsFloorplan = $arr['objects']['floorplan'];
 				$objectsFloorplanNew = get_url_from_raw_array($objectsFloorplan);
+				$property_data['objects']['floorplan'] = $objectsFloorplanNew;
 			}
 		}
 
-		//var_dump($arr['media']); // need to know the array elements
-		
 		if(array_key_exists('extraFields', $arr)){
 			$extraFields = $arr['extraFields'];
-		
-				foreach($extraFields as $extraField){
+			$property_data['extraFields'] = $extraFields;
+				// foreach($extraFields as $extraField){
 					
-					if(array_key_exists('@attributes', $extraField)){
-						foreach($extraField['@attributes'] as $attribute_key => $attribute_value){
-							//echo $attribute_key . ': ' . $attribute_value; 
-							//echo '<br>'; 
-						}
+				// 	if(array_key_exists('@attributes', $extraField)){
+				// 		//$property_data['extraFields']['@attributes'] = $extraField;
+				// 		foreach($extraField['@attributes'] as $attribute_key => $attribute_value){
+				// 			//$property_data['extraFields']['@attributes'] = $attribute_value;
+				// 		}
 					
-					}
+				// 	}
 		
-				}
+				// }
 			
 		}
 
+		//var_dump($arr['isMultiple']); // need to know the array elements
+		//var_dump($arr['buildingDetails']); // need to know the array elements
+		//var_dump($arr['media']); // need to know the array elements
+		
 		//echo '</pre>';
 	}
+
+	return $property_data;
 }
 
 function is_ab_property($arr){
@@ -858,27 +673,322 @@ function is_ab_property($arr){
 		return false;
 	}
 }
+
+function meta_value_arr($property_info){
+	$arr = array(
+		'wpabl_agent_id' => $property_info['agentID'],
+		'wpabl_unique_id' => $property_info['uniqueID'],
+		//'wpabl_is_multiple' => '',
+		'wpabl_sold_price' => $property_info['soldDetails']['soldPrice'],
+		'wpabl_sold_date' => $property_info['soldDetails']['soldDate'],
+		'wpabl_new_construction' => $property_info['newConstruction'],
+		'wpabl_tenancy' => $property_info['tenancy'],
+		'wpabl_authority' => $property_info['authority']['@attributes']['value'],
+		'wpabl_price' => $property_info['price'],
+		'wpabl_price_view' => $property_info['priceView'],
+		'wpabl_under_offer' => $property_info['underOffer']['@attributes']['value'],
+		'wpabl_exclusivity' => $property_info['exclusivity']['@attributes']['value'],
+		'wpabl_council_rates' => $property_info['councilRates'],
+		'wpabl_outgoings' => $property_info['outgoings'],
+		'wpabl_area' => $property_info['landDetails']['area'],
+		'wpabl_frontage' => $property_info['landDetails']['frontage'],
+		//'wpabl_energy_rating' => '',
+		'wpabl_sub_number' => $property_info['address']['subNumber'],
+		'wpabl_lot_number' => $property_info['address']['lotNumber'],
+		'wpabl_street_number' => $property_info['address']['streetNumber'],
+		'wpabl_street' => $property_info['address']['street'],
+		'wpabl_suburb' => $property_info['address']['suburb'],
+		'wpabl_state' => $property_info['address']['state'],
+		'wpabl_country' => $property_info['address']['country'],
+		'wpabl_post_code' => $property_info['address']['postcode'],
+		'wpabl_open_spaces' => '',
+		'wpabl_other_features' => $property_info['features']['otherFeatures'],
+		'wpabl_headline' => $property_info['headline'],
+		'wpabl_inspection_times' => '',
+		'wpabl_external_link' => $property_info['externalLink']['@attributes']['href'],
+		'wpabl_video_link' => $property_info['videoLink']['@attributes']['href'],
+	);
+	return $arr;
+
+}
+
+function convertArraytoString($arr){
+		
+	if(is_array($arr)){
+		$str = implode(", ", $arr);
+		$str = sanitize_text_field($str);
+	}else{
+		$str = sanitize_text_field($arr);
+	}
+	return $str;
+
+}
+
+function getLatLong($arr, $latlng='geoLat'){
+	$extraFields = $arr['extraFields'];
+		$latKey = '';
+		foreach($extraFields as $key => $extraField){
+			
+			$eF = $extraField['@attributes'];
+			if(array_key_exists('name', $eF) && ($eF['name'] == $latlng) && (array_key_exists('value', $eF))){
+				//echo '<pre>';
+				$geoLat = $eF['value'];
+				$latKey = $key;
+				//echo '</pre>';
+			}
+			
+		}
+		if($latKey){
+		return $extraFields[$latKey]['@attributes']['value'];
+		}else
+		return false;
+}
+
+function get_listing_agents($arr, $nth_agent=0){
+    
+    $listing_agents = $arr['listingAgent'];
+    $nth_agent = (int)$nth_agent;
+	if(array_key_exists($nth_agent, $listing_agents)){
+		if(array_key_exists( 'email' , $listing_agents[$nth_agent] )) {
+			if( $listing_agents[$nth_agent]['email'] == 'kerry-anne@kanproperty.com.au' ){
+
+				return '47'; // 47 is Kerry-Anne's id in wp 
+				
+				}elseif( $listing_agents[$nth_agent]['email'] == 'ashleigh@kanproperty.com.au'){
+					
+					return '45'; // 45 is ashleigh's id in wp 
+					
+					}else{
+						return '0';
+						}
+			
+		}
+	}else{
+		return '0';
+	}
+}
+
+function cpt_meta_value_arr($property_info){
+
+	$lat = getLatLong($property_info, 'geoLat');
+	$lng = getLatLong($property_info, 'geoLong');
+
+	$arr = array(
+		'unique_id' 					=> $property_info['uniqueID'],
+		'property_address' 				=> $property_info['address']['streetNumber'].' '.$property_info['address']['street'].', '.$property_info['address']['suburb'],
+		'property_lat' 					=> $lat,
+		'property_lng' 					=> $lng,
+		'street_number' 				=> $property_info['address']['streetNumber'],
+		'route' 						=> $property_info['address']['street'],
+		'neighborhood' 					=> '',
+		'locality' 						=> $property_info['address']['suburb'],
+		'administrative_area_level_1' 	=> $property_info['address']['state'],
+		'postal_code' 					=> $property_info['address']['postcode'],
+		'property_price' 				=> $property_info['priceView'],
+		'property_price_label' 			=> '',
+		'property_taxes' 				=> '',
+		'property_hoa_dues' 			=> '',
+		'property_beds' 				=> $property_info['features']['bedrooms'],
+		'property_baths' 				=> $property_info['features']['bathrooms'],
+		'property_size' 				=> (int)$property_info['features']['garages'] + (int)$property_info['features']['openSpaces'],
+		'garage' 						=> $property_info['features']['garages'],
+		'openspaces' 					=> $property_info['features']['openSpaces'],
+		'carports' 						=> $property_info['features']['carports'],
+		'toilets' 						=> $property_info['features']['toilets'],
+		'livingareas' 					=> $property_info['features']['livingAreas'],
+		'airconditioning' 				=> $property_info['features']['airConditioning'],
+		'alarmsystem' 					=> $property_info['features']['alarmSystem'],
+		'builtinrobes' 					=> $property_info['features']['builtInRobes'],
+		'ensuite' 						=> $property_info['features']['ensuite'],
+		'furnished' 					=> $property_info['features']['furnished'],
+		'intercom' 						=> $property_info['features']['intercom'],
+		'openfireplace' 				=> $property_info['features']['openFirePlace'],
+		'petfriendly' 					=> $property_info['features']['petFriendly'],
+		'smokers' 						=> $property_info['features']['smokers'],
+		'tenniscourt' 					=> $property_info['features']['tennisCourt'],
+		'vacuumsystem' 					=> $property_info['features']['vacuumSystem'],
+		'open_time' 					=> $property_info['inspectionTimes']['inspection'],
+		'built_in' 						=> '',
+		'lot_width' 					=> '',
+		'lot_depth' 					=> '',
+		'stories' 						=> '',
+		'room_count' 					=> '',
+		'parking_spaces' 				=> '',
+		'property_agent' 				=> get_listing_agents($property_info, 0),
+		'property_agent2' 				=> get_listing_agents($property_info, 1),
+		'property_floor_plans' 			=> '',
+		'property_video' 				=> $property_info['videoLink']['@attributes']['href'],
+		
+    );
+    
+    return $arr;
+
+}
+// add_action('admin_init', 'abcd');
+// function abcd(){
+// 	$post_types = get_post_types( array( 'public' => true ), 'names' ); 
+// 	var_dump( $post_types);
+// }
+//add_action('init', 'get_all_post_types');
+
+add_shortcode('xmltest', 'xmltestfn');
+
 function xmltestfn(){
+
+	/* Store the path of source file */
 
 	$all_files = glob(plugin_dir_path(__FILE__)."xml-files/*.xml");
     
         foreach($all_files as $file) {
 			//echo '<pre>';
-			//var_dump($file);
+			//var_dump(basename($file));
+
+			//$filePath = $file;
+  
+			/* Store the path of destination file */
+			//$destinationFilePath = plugin_dir_path(__FILE__).'processed/'.basename($file);
+			
+			/* Move File from images to copyImages folder */
+			// if( !rename($filePath, $destinationFilePath) ) {  
+			// 	echo "File can't be moved!";  
+			// }  
+			// else {  
+			// 	echo "File has been moved!";  
+			// } 
             $xml = simplexml_load_file($file);
 			$json = json_encode($xml);
         	$data_array = json_decode($json,TRUE);
 			unset($data_array['@attributes']);
 			//var_dump($data_array);
-			foreach($data_array as $properties_array){
+			foreach($data_array as $properties_array_key => $properties_array){
 				
 				if(is_assoc($properties_array)){
 					//var_dump(is_ab_property($properties_array));
 					$property_array = $properties_array;
 					if(is_ab_property($property_array)){
-						process_single_property_xml_data($property_array);
+						$property_info = process_single_property_xml_data($property_array);
+						//var_dump($property_array['inspectionTimes']['inspection']);
+						echo '<pre>';
+						//var_dump($property_array);
+						echo '</pre>';
+						$integration_type = get_option('hd_integration_type');
+
+
+						if($integration_type == 'plugin_cpt'){
+							$post_type = 'abproperty';
+							$unique_id = 'wpabl_unique_id';
+						}else{
+							$post_type = get_option('hd_post_types_dropdpwn');
+							$unique_id = 'unique_id';
+						}
+
+
+						if($post_type){
+						$args = array(
+							'post_type' => $post_type,
+							'meta_key'   => $unique_id,
+							'meta_value' => $property_info['uniqueID']
+						);
+						$query = new WP_Query( $args );
+
+						if ( $query->have_posts() ) {
+							while ( $query->have_posts() ) {
+								$query->the_post();
+								$post_id = get_the_ID();
+							}
+						} else {
+							// no posts found
+						}
+					
+						wp_reset_postdata();
+
+						//var_dump($query->found_posts);
+						if(($query->found_posts) > 0){
+							//Update post
+							echo 'Update'.$post_id.'<br>';
+							$post_title = $property_info['address']['streetNumber'].' ';
+							$post_title .= $property_info['address']['street'].', ';
+							$post_title .= $property_info['address']['suburb'];
+							
+							$post_content = nl2br($property_info['description']);
 						
+							$update_property_data = array(
+								'ID' => $post_id,
+								//'post_title'   => $post_title,
+								'post_content' => $post_content,
+								'meta_input' =>  cpt_meta_value_arr($property_info),
+							  );
+							  if( current_user_can( 'administrator' ) ){
+								wp_update_post( $update_property_data );
+
+								$property_type_id = $properties_array_key;
+								$property_status_id = $property_info['@attributes']['status'];
+						  
+								wp_set_object_terms( $post_id, $property_type_id, 'property_type' );
+								wp_set_object_terms( $post_id, $property_status_id, 'property_status' );
+							}
+							//var_dump($property_info);
+							  
+
+
+						}elseif(($query->found_posts) == 0){
+							//Insert post
+							echo 'insert';
+							$post_title = $property_info['address']['streetNumber'].' ';
+							$post_title .= $property_info['address']['street'].', ';
+							$post_title .= $property_info['address']['suburb'];
+							
+							$post_content = nl2br($property_info['description']);
+
+							$insert_property_data = array(
+								'post_title'    => $post_title,
+								'post_content'  => $post_content,
+								'post_type' 	=> $post_type,
+								'post_status'   => 'publish',
+								'meta_input' 	=>  cpt_meta_value_arr($property_info),
+							  );
+							
+							if( current_user_can( 'administrator' ) ){
+								$new_post_id = wp_insert_post( $insert_property_data );
+								$property_type_id = $properties_array_key;
+								$property_status_id = $property_info['@attributes']['status'];
+						  
+								wp_set_object_terms( $new_post_id, $property_type_id, 'property_type' );
+								wp_set_object_terms( $new_post_id, $property_status_id, 'property_status' );
+							}
+							//$new_post_id = wp_insert_post( $insert_property_data );
+						
+						}
+						//echo '<pre>';
+						//var_dump($properties_array_key); 
+						//echo '</pre>';
+						// echo $property_info['uniqueID'];
+						// $extraFields = $property_info['extraFields'];
+						// $latKey = '';
+						// foreach($extraFields as $key => $extraField){
+							
+						// 	$eF = $extraField['@attributes'];
+						// 	if(array_key_exists('name', $eF) && ($eF['name'] == 'geoLat') && (array_key_exists('value', $eF))){
+						// 		//echo '<pre>';
+						// 		$geoLat = $eF['value'];
+						// 		$latKey = $key;
+						// 		//echo '</pre>';
+						// 	}
+							
+						// }
+						//$lgid = get_listing_agents($property_info, 1);
+						echo '<pre>';
+						var_dump($property_info); 
+						//var_dump($lgid);
+						echo '</pre>';
+						
+
+						
+					}// checks $post_type has a value
+
 					}
+
+					//echo '<pre>' . var_export($properties_array, true) . '</pre>';
 					
 					//var_dump($properties_array);
 					//echo '<br><br><br>';
@@ -887,13 +997,17 @@ function xmltestfn(){
 						//var_dump(is_ab_property($property_array));
 						//var_dump($property_array);
 						//echo '<br><br><br>';
-						process_single_property_xml_data($property_array);
+						$property_info = process_single_property_xml_data($property_array);
+						//var_dump(count($property_info['extraFields']));
+						//var_dump($property_info);
 						
 					}
 				}
 			}
 			//echo '</pre>';
         }
+
+	
 
 }
 

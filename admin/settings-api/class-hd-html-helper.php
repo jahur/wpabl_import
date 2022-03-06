@@ -31,12 +31,12 @@ class HD_HTML_Helper {
 
 		$form_table = '';
 
-		$form_table .= '<table class="form-table">';
+		$form_table .= '<div class="hd_html_helper form-table">';
 
 		foreach ( (array) $fields as $field )
 			$form_table .= $this->get_table_row( $field, $show_help );
 
-		$form_table .= '</table>';
+		$form_table .= '</div>';
 
 		return apply_filters( 'hd_html_helper_form_table', $form_table, $fields, $show_help );
 
@@ -64,18 +64,10 @@ class HD_HTML_Helper {
 	 */
 	public function get_table_row( $field, $show_help ) {
 
-		switch($field['type']){
-			case "section":
-				$table_row = '<div class="wpabl-metabox-section-title">'. $field['title'] .'</div>';
-				break;
-			default:
-				$table_row = '<div class="wpabl-field-wrapper '.$field['classes'].'" valign="top">';
-					$table_row .= sprintf( '<div><label for="%s">%s</label></div>', esc_attr( $field['id'] ), $field['title'] );
-					$table_row .= sprintf( '<div>%s</div>', $this->get_field( $field, $show_help ) );
-				$table_row .= '</div>';
-
-		}
-		
+		$table_row = '<tr valign="top">';
+			$table_row .= sprintf( '<th><label for="%s">%s</label></th>', esc_attr( $field['id'] ), $field['title'] );
+			$table_row .= sprintf( '<td>%s</td>', $this->get_field( $field, $show_help ) );
+		$table_row .= '</tr>';
 
 		return apply_filters( 'hd_html_helper_table_row', $table_row, $field, $show_help );
 
@@ -137,6 +129,7 @@ class HD_HTML_Helper {
 		echo $this->get_field( $field, $show_help );
 
 	}
+
 
 	/**
 	 * Print Text Input
